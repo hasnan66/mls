@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "03dd216e-24ba-4336-877f-aecae8b7d7fd",
+		"name": "Survey",
+		"description": "Postman collection for Survey Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14238521"
+	},
+	"item": [
+		{
+			"name": "Create Survey",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Customer Satisfaction Survey\",\n  \"questions\": [\n    {\n      \"text\": \"How satisfied are you with our service?\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"]\n    },\n    {\n      \"text\": \"Would you recommend us to a friend?\",\n      \"options\": [\"Yes\", \"No\"]\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answer Survey",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"surveyId\": 1,\n  \"questionAnswers\": [\n    {\n      \"questionId\": 1,\n      \"selectedOption\": 2\n    },\n    {\n      \"questionId\": 2,\n      \"selectedOption\": 1\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/surveys/submit-answers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"surveys",
+						"submit-answers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Distribution",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/questions/2/distribution",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"questions",
+						"2",
+						"distribution"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
